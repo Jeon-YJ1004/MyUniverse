@@ -22,6 +22,9 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
 
   return (
     <nav className={scrolled ? 'scrolled' : ''}>
+      <NavLink to="/" end className="nav-logo">
+        JEON YEONG-JU
+      </NavLink>
       <div className="nav-links">
         <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')}>
           Home

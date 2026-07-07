@@ -95,10 +95,18 @@ nav.scrolled {
 
 .nav-logo {
   font-family: var(--display);
-  font-size: 20px;
+  font-size: 19px;
+  font-weight: 800;
   color: var(--text);
   text-decoration: none;
-  letter-spacing: 2px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transition: opacity 0.25s;
+  flex-shrink: 0;
+}
+
+.nav-logo:hover {
+  opacity: 0.72;
 }
 
 .nav-links {
@@ -238,5 +246,37 @@ body, p, span, a, li, div, input, button {
   gap: 1.5rem !important;
 }
 
+/* ── 모바일 헤더 겹침 방지 반응형 대응 ── */
+@media (max-width: 768px) {
+  nav {
+    padding: 0.8rem 1.2rem !important;
+    flex-direction: column !important;
+    gap: 0.6rem !important;
+    align-items: center !important;
+    position: fixed !important;
+    background: rgba(8, 8, 20, 0.88) !important;
+    backdrop-filter: blur(10px) !important;
+    border-bottom: 0.5px solid var(--border) !important;
+  }
+  
+  html[data-theme="light"] nav {
+    background: rgba(255, 255, 255, 0.9) !important;
+  }
 
+  .nav-links {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    gap: 1.2rem !important;
+  }
 
+  .nav-logo {
+    font-size: 15.5px !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  .theme-btn {
+    position: absolute !important;
+    right: 1.2rem !important;
+    top: 0.7rem !important;
+  }
+}

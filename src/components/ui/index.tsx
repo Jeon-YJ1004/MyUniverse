@@ -36,20 +36,22 @@ interface PageHeaderProps {
 export const PageHeader: React.FC<PageHeaderProps> = ({ label, title, desc }) => {
   return (
     <div className="page-header" style={{ marginBottom: '5rem' }}>
-      <p
-        className="page-label"
-        style={{
-          fontFamily: 'var(--mono)',
-          fontSize: '13px',
-          fontWeight: '700',
-          color: 'var(--text)',
-          letterSpacing: '0.14em',
-          textTransform: 'uppercase',
-          marginBottom: '12px',
-        }}
-      >
-        {label}
-      </p>
+      {label && (
+        <p
+          className="page-label"
+          style={{
+            fontFamily: 'var(--mono)',
+            fontSize: '13px',
+            fontWeight: '700',
+            color: 'var(--text)',
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            marginBottom: '12px',
+          }}
+        >
+          {label}
+        </p>
+      )}
       <h1
         className="page-title"
         style={{
@@ -70,7 +72,8 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ label, title, desc }) =>
             fontWeight: '500',
             color: 'var(--muted)',
             lineHeight: 1.75,
-            maxWidth: '520px',
+            maxWidth: '760px',
+            wordBreak: 'keep-all',
           }}
         >
           {desc}

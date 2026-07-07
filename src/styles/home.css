@@ -205,3 +205,49 @@ html[data-theme="light"] .sat-tooltip {
 .sat-tooltip.visible {
   opacity: 1;
 }
+
+/* ── BRAND HEADER LEFT (C안) ── */
+.brand-header-left {
+  position: absolute;
+  left: 6%;
+  top: 7%;
+  z-index: 100;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.brand-name {
+  font-family: var(--display);
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.0;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.45);
+}
+
+.brand-title {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1.1vw, 10.5px);
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  color: var(--muted);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* 라이트 모드 대응 */
+html[data-theme="light"] .brand-name {
+  color: #111111;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 768px) {
+  .brand-header-left {
+    left: 5%;
+    top: 4.5%;
+  }
+}

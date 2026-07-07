@@ -308,12 +308,7 @@ export const Home: React.FC = () => {
       renderer.setSize(w, h);
 
       // 종횡비(aspect ratio)를 기반으로 3D 물체가 화면 양옆/상하에서 절대 잘리지 않는 물리 Z 축 산출
-      // 최외곽 궤도 지름(24.0) + 위성 크기/패널 마진 여유(약 4.0) = 총 28.0의 가시 공간 확보 필요
       const aspect = w / h;
-      
-      // 세로 높이 방향 안전거리: 26.0 (Z >= 28.0)
-      // 가로 너비 방향 안전거리: 30.0 / aspect
-      // 이 둘 중 맥스 값을 사용하여 뷰포트 종횡비에 구애받지 않고 무조건 100% 궤도 안착
       targetZ = Math.max(30.0 / aspect, 28.0);
     };
     window.addEventListener('resize', handleResize);
@@ -480,7 +475,7 @@ export const Home: React.FC = () => {
 
               {/* 툴팁 */}
               {isHovered && (
-                <div className="sat-tooltip visible" style={{ top: '115%' }}>
+                <div className="sat-tooltip visible" style={{ top: '110%' }}>
                   {sat.tip}
                 </div>
               )}
@@ -488,6 +483,8 @@ export const Home: React.FC = () => {
           </div>
         );
       })}
+
+
 
       {/* HTML Overlays: 3D 투영 기술 스택 소행성 텍스트들 */}
       {techAsteroids.map((tech) => {
