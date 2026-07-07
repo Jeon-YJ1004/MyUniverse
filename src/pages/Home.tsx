@@ -50,7 +50,7 @@ export const Home: React.FC = () => {
       tip: '프로필 — 기술 스택 & 스토리',
       glow: 'rgba(100,200,255,0.7)',
       orbitRadius: 4.8,
-      speed: 0.28,
+      speed: 0.16, // 속도 통일
       angleOffset: 0,
       rotX: 1.05, // 60deg
       rotY: 0.17, // 10deg
@@ -72,7 +72,7 @@ export const Home: React.FC = () => {
       tip: '프로젝트 — 5개 작업물',
       glow: 'rgba(255,180,80,0.75)',
       orbitRadius: 7.2,
-      speed: -0.2, // 역회전
+      speed: 0.16, // 속도 통일
       angleOffset: Math.PI * 0.5,
       rotX: -0.87, // -50deg
       rotY: -0.35, // -20deg
@@ -94,7 +94,7 @@ export const Home: React.FC = () => {
       tip: '경험 — 오더체크 실무',
       glow: 'rgba(100,255,160,0.7)',
       orbitRadius: 9.6,
-      speed: 0.15,
+      speed: 0.16, // 속도 통일
       angleOffset: Math.PI,
       rotX: 0.78, // 45deg
       rotY: -0.52, // -30deg
@@ -117,7 +117,7 @@ export const Home: React.FC = () => {
       tip: '연락처 — 이메일 & GitHub',
       glow: 'rgba(220,140,255,0.7)',
       orbitRadius: 12.0,
-      speed: -0.11, // 역회전
+      speed: 0.16, // 속도 통일
       angleOffset: Math.PI * 1.5,
       rotX: -1.13, // -65deg
       rotY: 0.26, // 15deg
