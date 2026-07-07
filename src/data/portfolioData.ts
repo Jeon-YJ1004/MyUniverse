@@ -254,22 +254,28 @@ export const WORK_ITEMS: WorkItem[] = [
 
 export const EDUCATION_LIST: EducationItem[] = [
   {
-    title: '삼성 청년 SW 아카데미 (SSAFY) 11기 수료',
-    desc: '서울 캠퍼스 · 공통/특화/자율 3개 프로젝트 수행 · 우수상 수상 (공통프로젝트 팀 1위)',
-    period: '2024.01 — 2024.12',
-    color: '#6abaef',
-  },
-  {
     title: '서울과학기술대학교 컴퓨터공학과 졸업',
     desc: '게임동아리 TCP 활동 · 졸업작품: 3D 태양계 시뮬레이션 (Three.js)',
     period: '2018.03 — 2022.08',
     color: '#6ade8a',
   },
   {
+    title: '정보처리기사 자격증 취득',
+    desc: '한국산업인력공단 (Q-Net) 발행 · 컴퓨터 시스템 및 소프트웨어 전공 기본 소양 검증',
+    period: '2022.11',
+    color: '#f0a830',
+  },
+  {
     title: 'SSAFY 11기 공통프로젝트 우수상',
     desc: 'SaveMe & RescU — 119 신고 WebRTC 화상통화 서비스 · 팀 1위 선정',
     period: '2024.08',
     color: '#c080f0',
+  },
+  {
+    title: '삼성 청년 SW 아카데미 (SSAFY) 11기 수료',
+    desc: '서울 캠퍼스 · 공통/특화/자율 3개 프로젝트 수행 · 우수상 수상 (공통프로젝트 팀 1위)',
+    period: '2024.01 — 2024.12',
+    color: '#6abaef',
   },
 ];
 
