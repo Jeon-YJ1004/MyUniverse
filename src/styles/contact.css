@@ -1,0 +1,333 @@
+/* ── CONTACT LINKS ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.contact-card {
+  border: 0.5px solid var(--border);
+  border-radius: 16px;
+  padding: 1.6rem 1.75rem;
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--card-glow, transparent) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.contact-card:hover {
+  border-color: var(--border-hi);
+  background: var(--card-hover-bg);
+  transform: translateY(-3px);
+}
+
+.contact-card:hover::before {
+  opacity: 1;
+}
+
+.contact-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border: 0.5px solid var(--border);
+  transition: transform 0.25s;
+}
+
+.contact-card:hover .contact-icon {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-type {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.contact-value {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-action {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.contact-card:hover .contact-action {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── TOAST ── */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  background: var(--text);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 200;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── GITHUB CONTRIBUTIONS ── */
+.github-block {
+  border: 0.5px solid var(--border);
+  border-radius: 16px;
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+
+.github-header {
+  padding: 1.4rem 1.75rem;
+  border-bottom: 0.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.github-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.github-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2a4a6a, #3a7a5a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-size: 14px;
+  color: #e8e4d8;
+  flex-shrink: 0;
+}
+
+.github-username {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text);
+}
+
+.github-sub {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 1px;
+}
+
+.github-link {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 0.5px solid rgba(106, 186, 239, 0.2);
+  padding: 5px 12px;
+  border-radius: 999px;
+  transition: background 0.2s;
+}
+
+.github-link:hover {
+  background: rgba(106, 186, 239, 0.08);
+}
+
+.contrib-wrap {
+  padding: 1.4rem 1.75rem;
+}
+
+.contrib-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  letter-spacing: 0.08em;
+}
+
+/* contribution grid */
+.contrib-grid {
+  display: flex;
+  gap: 3px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.contrib-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.contrib-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contrib-cell {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  background: var(--cell-bg, rgba(128, 128, 128, 0.08));
+  transition: transform 0.15s;
+  cursor: default;
+  flex-shrink: 0;
+}
+
+.contrib-cell:hover {
+  transform: scale(1.4);
+  z-index: 2;
+  position: relative;
+}
+
+.contrib-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.contrib-total {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.contrib-legend {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.legend-cell {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+/* ── RECENT REPOS ── */
+.repos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 1.2rem;
+}
+
+.repo-card {
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  background: var(--card-bg);
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.repo-card:hover {
+  border-color: var(--border-hi);
+  transform: translateY(-2px);
+}
+
+.repo-name {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.repo-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.repo-meta {
+  display: flex;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.repo-lang::before {
+  content: '●';
+  margin-right: 4px;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .repos-grid {
+    grid-template-columns: 1fr;
+  }
+  .contrib-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
