@@ -84,15 +84,15 @@ export const Experience: React.FC = () => {
       {/* HEADER */}
       <Reveal>
         <PageHeader
-          label="커리어 / 경력"
-          title={
+          label=""
+          title="WORK EXPERIENCE"
+          desc={
             <>
-              EXPERI<span>-</span>
+              코드를 작성하기 전, 해결해야 할 진짜 문제를 깊게 고민합니다.
               <br />
-              ENCE
+              사용자가 불편함을 느끼는 지점으로부터 시작해 기술로 문제를 돌파하는 과정을 기록했습니다.
             </>
           }
-          desc="코드보다 문제를 먼저 봤다. 사용자가 불편한 지점에서 시작해서 기술로 해결하는 과정을 기록했다."
         />
       </Reveal>
 

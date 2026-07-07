@@ -8,13 +8,6 @@
 }
 
 /* ── HEADER ── */
-.page-header {
-  margin-bottom: 5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: end;
-}
 
 .page-label {
   font-family: var(--mono);

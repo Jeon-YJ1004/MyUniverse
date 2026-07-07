@@ -503,7 +503,7 @@ export const Projects: React.FC = () => {
   return (
     <div className="page">
       <PageHeader
-        label="포트폴리오 / 작업물"
+        label=""
         title="PROJECTS"
       />
 
