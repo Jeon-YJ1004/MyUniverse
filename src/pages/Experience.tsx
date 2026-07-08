@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { WORK_ITEMS, EDUCATION_LIST } from '../data/portfolioData';
 import { PageHeader, Reveal, Tag, ResultPill } from '../components/ui';
 import '../styles/experience.css';
 
+/* 임시 주석 처리 (과다/작위적 지표 비활성화)
 interface CountUpProps {
   target: number;
   prev?: number;
@@ -43,37 +44,38 @@ const CountUp: React.FC<CountUpProps> = ({ target, prev = 0, suffix = '', trigge
     </>
   );
 };
+*/
 
 export const Experience: React.FC = () => {
-  const [statsVisible, setStatsVisible] = useState(false);
+  // const [statsVisible, setStatsVisible] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
-  const statsRowRef = useRef<HTMLDivElement | null>(null);
+  // const statsRowRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    // Stats CountUp Observer
-    const statsIO = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setStatsVisible(true);
-            statsIO.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (statsRowRef.current) {
-      statsIO.observe(statsRowRef.current);
-    }
-
-    return () => {
-      if (statsRowRef.current) {
-        statsIO.unobserve(statsRowRef.current);
-      }
-    };
-  }, []);
+  // useEffect(() => {
+  //   // Stats CountUp Observer
+  //   const statsIO = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((e) => {
+  //         if (e.isIntersecting) {
+  //           setStatsVisible(true);
+  //           statsIO.unobserve(e.target);
+  //         }
+  //       });
+  //     },
+  //     { threshold: 0.3 }
+  //   );
+  // 
+  //   if (statsRowRef.current) {
+  //     statsIO.observe(statsRowRef.current);
+  //   }
+  // 
+  //   return () => {
+  //     if (statsRowRef.current) {
+  //       statsIO.unobserve(statsRowRef.current);
+  //     }
+  //   };
+  // }, []);
 
   const toggleDetail = (index: number) => {
     setExpandedIndex((prev) => (prev === index ? null : index));
@@ -111,7 +113,8 @@ export const Experience: React.FC = () => {
             </div>
           </div>
 
-          {/* STATS COUNTUP */}
+          {/* STATS COUNTUP (임시 주석 처리 - 과다/작위적 지표 비활성화) */}
+          {/*
           <div className="stats-row" ref={statsRowRef}>
             <div className="stat-item">
               <div className="stat-num">
@@ -154,6 +157,7 @@ export const Experience: React.FC = () => {
               </div>
             </div>
           </div>
+          */}
 
           {/* WORK ITEMS */}
           <div className="work-list">
