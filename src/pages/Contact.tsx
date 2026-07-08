@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import { useTheme } from '../hooks/useTheme';
+import React, { useState } from 'react';
 import { PageHeader, SectionHeader, Reveal } from '../components/ui';
 import '../styles/contact.css';
 
+// 임시 주석 처리 (GitHub Activity 비활성화용)
+/*
 interface RepoData {
   name: string;
   desc: string;
@@ -18,72 +19,73 @@ interface GitHubProfile {
   publicRepos: number;
   bio: string;
 }
+*/
 
 export const Contact: React.FC = () => {
-  const { theme } = useTheme();
   const [toast, setToast] = useState<{ show: boolean; message: string }>({ show: false, message: '' });
-  const [repos, setRepos] = useState<RepoData[]>([]);
-  const [profile, setProfile] = useState<GitHubProfile | null>(null);
-  const [loading, setLoading] = useState(true);
+  // 임시 주석 처리 (GitHub Activity 비활성화용)
+  // const [repos, setRepos] = useState<RepoData[]>([]);
+  // const [profile, setProfile] = useState<GitHubProfile | null>(null);
+  // const [loading, setLoading] = useState(true);
 
   // 1. Fetch Real GitHub Data (repos & profile)
-  useEffect(() => {
-    const fetchGitHubData = async () => {
-      try {
-        setLoading(true);
-        const username = 'Jeon-YJ1004';
-        
-        // Fetch Profile
-        const profileRes = await fetch(`https://api.github.com/users/${username}`);
-        if (profileRes.ok) {
-          const profileData = await profileRes.json();
-          setProfile({
-            avatarUrl: profileData.avatar_url,
-            followers: profileData.followers,
-            publicRepos: profileData.public_repos,
-            bio: profileData.bio || 'Frontend Developer',
-          });
-        }
-
-        // Fetch Repos
-        const reposRes = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=3`);
-        if (reposRes.ok) {
-          const reposData = await reposRes.json();
-          
-          // 언어별 고유 색상 매핑
-          const getLangColor = (lang: string) => {
-            const colors: { [key: string]: string } = {
-              TypeScript: '#3178c6',
-              JavaScript: '#f1e05a',
-              HTML: '#e34c26',
-              CSS: '#563d7c',
-              Vue: '#41b883',
-              Python: '#3572A5',
-              Dart: '#00B4AB',
-              Svelte: '#ff3e00',
-            };
-            return colors[lang] || '#8b8b8b';
-          };
-
-          const formattedRepos = reposData.map((repo: any) => ({
-            name: repo.name,
-            desc: repo.description || '설명이 등록되지 않은 저장소입니다.',
-            lang: repo.language || 'Plain Text',
-            langColor: getLangColor(repo.language || ''),
-            stars: repo.stargazers_count,
-            url: repo.html_url,
-          }));
-          setRepos(formattedRepos);
-        }
-      } catch (error) {
-        console.error('GitHub API Fetch Error:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchGitHubData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchGitHubData = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const username = 'Jeon-YJ1004';
+  //       
+  //       // Fetch Profile
+  //       const profileRes = await fetch(`https://api.github.com/users/${username}`);
+  //       if (profileRes.ok) {
+  //         const profileData = await profileRes.json();
+  //         setProfile({
+  //           avatarUrl: profileData.avatar_url,
+  //           followers: profileData.followers,
+  //           publicRepos: profileData.public_repos,
+  //           bio: profileData.bio || 'Frontend Developer',
+  //         });
+  //       }
+  // 
+  //       // Fetch Repos
+  //       const reposRes = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=3`);
+  //       if (reposRes.ok) {
+  //         const reposData = await reposRes.json();
+  //         
+  //         // 언어별 고유 색상 매핑
+  //         const getLangColor = (lang: string) => {
+  //           const colors: { [key: string]: string } = {
+  //             TypeScript: '#3178c6',
+  //             JavaScript: '#f1e05a',
+  //             HTML: '#e34c26',
+  //             CSS: '#563d7c',
+  //             Vue: '#41b883',
+  //             Python: '#3572A5',
+  //             Dart: '#00B4AB',
+  //             Svelte: '#ff3e00',
+  //           };
+  //           return colors[lang] || '#8b8b8b';
+  //         };
+  // 
+  //         const formattedRepos = reposData.map((repo: any) => ({
+  //           name: repo.name,
+  //           desc: repo.description || '설명이 등록되지 않은 저장소입니다.',
+  //           lang: repo.language || 'Plain Text',
+  //           langColor: getLangColor(repo.language || ''),
+  //           stars: repo.stargazers_count,
+  //           url: repo.html_url,
+  //         }));
+  //         setRepos(formattedRepos);
+  //       }
+  //     } catch (error) {
+  //       console.error('GitHub API Fetch Error:', error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  // 
+  //   fetchGitHubData();
+  // }, []);
 
   // Toast Handler
   const showToast = (message: string) => {
@@ -103,9 +105,9 @@ export const Contact: React.FC = () => {
   };
 
   // Theme-synchronized GitHub contribution chart color
-  const chartGlowColor = useMemo(() => {
-    return theme === 'dark' ? '6abaef' : '2a7abb';
-  }, [theme]);
+  // const chartGlowColor = useMemo(() => {
+  //   return theme === 'dark' ? '6abaef' : '2a7abb';
+  // }, [theme]);
 
   return (
     <div className="page">
