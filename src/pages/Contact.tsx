@@ -112,9 +112,15 @@ export const Contact: React.FC = () => {
       {/* HEADER */}
       <Reveal>
         <PageHeader 
-          label="연락처 / 링크" 
-          title={<>LET'S<br />TALK</>} 
-          desc={<>같이 만들어보고 싶은 게 있다면 편하게 연락해요.<br /><strong>코드로 대화해요.</strong></>}
+          label="" 
+          title="CONTACT" 
+          desc={
+            <>
+              함께 고민하고 만들어보고 싶은 서비스가 있다면 언제든 편하게 연락해 주세요.
+              <br />
+              코드로 즐겁게 소통하고 이야기하기를 기대합니다.
+            </>
+          }
         />
       </Reveal>
 
@@ -196,7 +202,8 @@ export const Contact: React.FC = () => {
         </div>
       </Reveal>
 
-      {/* GITHUB ACTIVITY */}
+      {/* GITHUB ACTIVITY (임시 주석 처리) */}
+      {/*
       <Reveal delay={200} className="section">
         <SectionHeader label="GitHub Activity" />
 
@@ -231,7 +238,6 @@ export const Contact: React.FC = () => {
           <div className="contrib-wrap">
             <div className="contrib-label">Contribution Chart · 실시간 기여 현황</div>
             
-            {/* Real GitHub Contribution Chart Widget */}
             <div 
               className="contrib-chart-container"
               style={{
@@ -263,7 +269,6 @@ export const Contact: React.FC = () => {
               </div>
             </div>
 
-            {/* Recent Repositories */}
             <div className="contrib-label" style={{ marginTop: '1.5rem', marginBottom: '10px' }}>
               Recent Repositories (실시간)
             </div>
@@ -295,6 +300,7 @@ export const Contact: React.FC = () => {
           </div>
         </div>
       </Reveal>
+      */}
 
       {/* CLOSING */}
       <Reveal delay={300} className="section">
