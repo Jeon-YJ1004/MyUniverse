@@ -1,5 +1,3 @@
-// ── TYPES ──
-
 export type Filter = 'all' | 'web' | 'app' | 'game';
 
 export interface ProjectDetail {
@@ -18,6 +16,7 @@ export interface Project {
   color: string;
   textColor: string;
   date: string;
+  cardDate: string;
   filter: Filter;
   wide?: boolean;
   award?: string;
@@ -68,25 +67,26 @@ export const PROJECTS: Project[] = [
     tags: ['React', 'WebRTC', 'OpenVidu', 'Spring Boot'],
     color: '#1a2a3a',
     textColor: '#c8dde8',
-    date: 'JUL — AUG 2024',
+    date: '2024.07~2024.08',
+    cardDate: '2024.07',
     filter: 'web',
     award: '우수상 수상',
-    github: 'https://github.com/Jeon-YJ1004',
+    github: 'https://github.com/common11-B305/SaveMe_RescU',
     detail: {
       problem: [
-        { label: '문제 상황', text: '119 신고 시 음성만으로는 현장 상황을 정확히 전달하기 어렵다. 특히 신고자가 패닉 상태일 때 말로 위치와 상황을 설명하는 것 자체가 큰 장벽이었다.' },
-        { label: '왜 어려웠는가', text: 'WebRTC 기반 P2P 연결은 NAT 환경에서 연결이 끊기는 경우가 잦았다. OpenVidu를 선택한 건 STUN/TURN 서버 관리를 직접 하지 않아도 되는 추상화 때문이었는데, 초기 연결 지연이 생각보다 길었다.' },
+        { label: '문제 상황', text: '기존 신고 시스템은 음성 중심이라 시각적 정보 전달이 어렵고, 긴급 상황에서 의료 정보 전달이 지연되는 한계가 있었습니다.' },
+        { label: '기획 의도', text: '실시간 화상 신고와 의료 정보 자동 전달로 구조 효율성을 높이고, NFC 태깅을 통해 주변인이 빠르게 대리 신고할 수 있는 기능을 기획했습니다.' },
       ],
       techs: [
-        { name: 'React', reason: '컴포넌트 재사용성. 영상 스트림 UI와 신고 폼을 분리 관리하기 위해.' },
-        { name: 'WebRTC + OpenVidu', reason: 'P2P 실시간 영상 통화. STUN/TURN 추상화로 개발 속도 확보.' },
-        { name: 'Spring Boot', reason: '시그널링 서버 구현. WebSocket 기반 연결 중계.' },
+        { name: 'React & Zustand', reason: '단계별 폼 입력과 같은 복잡한 클라이언트 상태를 Zustand로 전역 관리하여 UI 일관성을 유지했습니다.' },
+        { name: 'WebRTC (OpenVidu)', reason: '119 상황실과 신고자 간의 지연 없는 실시간 영상 소통과 채팅 신고를 구현하기 위해 도입했습니다.' },
+        { name: 'Axios Interceptor', reason: 'JWT 토큰 갱신 오류를 방지하고 자동 갱신 로직을 처리하여 안정적인 사용자 세션을 유지했습니다.' },
       ],
-      trial: '처음에는 직접 STUN 서버를 구성했는데 NAT 환경에서 연결 실패율이 높았다. OpenVidu로 전환 후 연결 안정성이 올라갔지만 대신 서버 비용 구조를 이해하고 팀원에게 설명하는 시간이 필요했다.',
+      trial: 'API 호출 실패 상황에 대비해 Axios retry 로직을 적용하고 반복 실패 시 일반 전화로 안내하도록 예외를 처리했습니다. 또한 방대한 의약품 데이터 자동완성 검색 기능에 Debounce 기법을 얹어 API 호출을 60~75% 절감하는 성능 최적화를 이루어냈습니다.',
       results: [
-        { num: '< 2s', desc: '평균 연결 수립 시간' },
-        { num: '팀 1위', desc: '공통프로젝트 심사 결과' },
-        { num: '우수상', desc: 'SSAFY 11기 수상' },
+        { num: '60~75% ↓', desc: '의약품 검색 API 호출 절감' },
+        { num: '우수상', desc: 'SSAFY 공통프로젝트' },
+        { num: '입상', desc: 'SSAFY UCC 경진대회' },
       ],
     },
   },
@@ -95,27 +95,28 @@ export const PROJECTS: Project[] = [
     name: ['Vincent', 'Run Gogh'],
     category: 'SSAFY 11기 특화프로젝트',
     sub: 'GPS 아트 러닝 서비스',
-    tags: ['Svelte', 'Leaflet.js', 'GPS', 'Node.js'],
+    tags: ['Svelte', 'TypeScript', 'Leaflet.js', 'TailwindCSS'],
     color: '#1a2b1a',
     textColor: '#b0ccb0',
-    date: 'AUG — OCT 2024',
+    date: '2024.08~2024.10',
+    cardDate: '2024.08',
     filter: 'web',
-    github: 'https://github.com/Jeon-YJ1004',
+    github: 'https://github.com/VincentRunGogh/VincentRunGogh',
     detail: {
       problem: [
-        { label: '문제 상황', text: '러닝은 운동이지만 단순 반복이라 지속하기 어렵다. "내가 뛴 경로가 그림이 된다"면 루트 설계 자체가 목적이 된다는 아이디어에서 시작했다.' },
-        { label: '기술적 고민', text: 'React 대신 Svelte를 선택한 건 실시간 GPS 좌표 업데이트 시 불필요한 리렌더링을 줄이기 위해서였다. GPS 좌표가 초당 여러 번 들어오는 환경에서 Svelte의 컴파일 타임 반응성이 유리했다.' },
+        { label: '문제 상황', text: 'GPS 신호 불안정으로 인해 렌더링되는 경로 데이터가 튀는 문제가 잦았고, 지도 캡처 시 비동기 로딩 누락이 발생했습니다.' },
+        { label: '기획 의도', text: '러닝 경로를 예술적으로 기록(GPS 아트)하고, 이를 FullCalendar 기반의 개인 기록과 커뮤니티 공유로 확장하는 피트니스 서비스입니다.' },
       ],
       techs: [
-        { name: 'Svelte', reason: '실시간 GPS 업데이트 시 리렌더링 최소화. 번들 크기도 React 대비 작음.' },
-        { name: 'Leaflet.js', reason: 'OpenStreetMap 기반 커스텀 경로 렌더링. SVG 오버레이로 아트 경로 표현.' },
-        { name: 'GPS Web API', reason: 'navigator.geolocation으로 브라우저 네이티브 위치 추적.' },
+        { name: 'Svelte', reason: '가볍고 반응성이 뛰어난 런타임 성능을 바탕으로 복잡한 리액티브 상태를 제어하며 프론트엔드 코드량을 30% 감소시켰습니다.' },
+        { name: 'TypeScript', reason: 'JS에서 TS로 마이그레이션을 진행하여 방대한 GPS 데이터 타입과 객체 안정성을 대폭 향상시켰습니다.' },
+        { name: 'Leaflet.js', reason: '실시간 사용자의 이동 위치를 SVG 경로로 정밀하게 추적하고 시각화하는 맵 엔진으로 사용했습니다.' },
       ],
-      trial: '초기에는 좌표를 전부 저장하다 보니 긴 러닝 후 경로 렌더링이 느려지는 문제가 있었다. Ramer-Douglas-Peucker 알고리즘으로 좌표를 단순화해서 해결했다.',
+      trial: 'GPS 데이터 튐 현상을 해결하기 위해 속도 기반 필터링과 좌표 보정 로직을 직접 설계해 깔끔한 경로 드로잉을 이끌어냈습니다. 또한, 운동 완료 후 지도 이미지 캡처 누락 문제를 렌더링 비동기 대기 로직과 타임아웃 처리를 추가하여 완벽하게 방어했습니다.',
       results: [
-        { num: '1m', desc: '최소 경로 인식 거리' },
-        { num: 'SVG', desc: '경로를 아트로 내보내기' },
-        { num: '5인', desc: '팀 구성' },
+        { num: '30% 감소', desc: 'Svelte 도입 후 코드량' },
+        { num: 'TS 전환', desc: '타입 안정성 향상' },
+        { num: '오차 보정', desc: '속도 기반 좌표 필터링 설계' },
       ],
     },
   },
@@ -124,27 +125,28 @@ export const PROJECTS: Project[] = [
     name: ['별이삼샵'],
     category: 'SSAFY 11기 자율프로젝트',
     sub: '위치 기반 쪽지 서비스',
-    tags: ['Flutter', 'FCM', 'Kakao Map API', 'GA4'],
+    tags: ['Flutter', 'Firebase', 'Kakao Map', 'GA4'],
     color: '#1e1628',
     textColor: '#c8b8d8',
-    date: 'OCT — NOV 2024',
+    date: '2024.10~2024.11',
+    cardDate: '2024.10',
     filter: 'app',
-    github: 'https://github.com/Jeon-YJ1004',
+    github: 'https://github.com/givemagalaxy/star23sharp',
     detail: {
       problem: [
-        { label: '문제 상황', text: '특정 장소에 의미를 담아 남기고 싶은데, 기존 SNS는 너무 공개적이다. "이 장소에 가야만 볼 수 있는 메시지"라는 개념으로 위치 기반 쪽지 서비스를 기획했다.' },
-        { label: '기술적 선택', text: 'Web이 아닌 Flutter를 선택한 이유는 위치 권한과 푸시 알림 처리가 네이티브에 가까울수록 안정적이기 때문이었다. 특히 백그라운드 위치 감지는 WebView 기반에서 제약이 많았다.' },
+        { label: '문제 상황', text: '앱 환경에서 API 호출 실패 시 앱이 멈추거나, 데이터 직렬화 문제로 메시지 전송이 불안정해지는 크리티컬한 이슈가 있었습니다.' },
+        { label: '기획 의도', text: '특정 랜드마크에 가야만 열어볼 수 있는 위치 기반 쪽지(보물 쪽지)를 통해 재미와 소통을 결합한 감성 메신저 서비스입니다.' },
       ],
       techs: [
-        { name: 'Flutter', reason: '크로스플랫폼 + 네이티브 위치/알림 권한 처리. WebView 대비 백그라운드 감지 안정성.' },
-        { name: 'FCM', reason: '특정 좌표 반경 진입 시 푸시 알림. 서버에서 트리거 조건 관리.' },
-        { name: 'GA4', reason: '어떤 장소 유형에서 쪽지가 많이 남겨지는지 사용 패턴 분석.' },
+        { name: 'Flutter & Provider', reason: '단일 코드베이스로 모바일 네이티브 환경(Kakao Map, 권한)을 제어하고, Provider 패턴으로 앱 전역 상태를 관리했습니다.' },
+        { name: 'Firebase (FCM)', reason: '쪽지가 수신되거나 주변 위치에 도달했을 때 실시간으로 백그라운드 푸시 알림을 전달하기 위해 사용했습니다.' },
+        { name: 'Dio', reason: 'API 통신 과정에서 직렬화와 인터셉터를 다루며 통신 타임아웃 문제를 해결하는 핵심 HTTP 클라이언트로 활용했습니다.' },
       ],
-      trial: '반경 감지를 처음엔 Geofencing API로 구현했는데 iOS에서 진입 감지 딜레이가 최대 수 분까지 발생했다. 결국 서버 폴링 방식으로 전환하고 배터리 소모를 줄이기 위해 폴링 주기를 동적으로 조절하는 방식을 썼다.',
+      trial: 'API 호출 타임아웃 문제를 겪고 이미지 용량을 압축해보았으나 문제가 지속되었습니다. 원인 분석 결과 Dio 직렬화 로직의 문제임을 파악하고 이를 수정하여 전송을 안정화했습니다. 런칭 후에는 닉북 기반 친구 자동완성 기능을 추가하여 사용자 입력 불편을 개선했습니다.',
       results: [
-        { num: '50m', desc: '쪽지 수신 반경 (최적화 후)' },
-        { num: 'iOS+AOS', desc: '크로스플랫폼 지원' },
-        { num: '6인', desc: '팀 구성' },
+        { num: '189명', desc: '1차 배포 활성 사용자' },
+        { num: '25개', desc: 'GA4/피드백 기반 기능 개선' },
+        { num: '안정화', desc: '에러 핸들링/직렬화 최적화' },
       ],
     },
   },
@@ -156,23 +158,24 @@ export const PROJECTS: Project[] = [
     tags: ['React', 'Three.js', 'React-Three-Fiber'],
     color: '#0a0a16',
     textColor: '#c8c0e0',
-    date: 'MAR — APR 2022',
+    date: '2022.03~2022.04',
+    cardDate: '2022.03',
     filter: 'web',
-    github: 'https://github.com/Jeon-YJ1004',
+    github: 'https://github.com/jeon-yj1004/Capstone-Design2',
     detail: {
       problem: [
-        { label: '문제 상황', text: '태양계 행성 간 거리와 크기 비율을 실제로 느끼기 어렵다. 교과서 그림은 비율을 왜곡한다. 실제 공전 속도 차이를 눈으로 보여주고 싶었다.' },
-        { label: '기술적 고민', text: 'Three.js를 React와 통합할 때 DOM과 Canvas 렌더 사이클이 충돌하는 문제가 있었다. React-Three-Fiber가 React 생명주기 안에서 Three.js Scene을 관리할 수 있게 해줘서 선택했다.' },
+        { label: '기획 의도', text: '평면적인 교과서 이미지로는 체감하기 어려운 태양계 천체들의 실제 크기 비율과 자전/공전 속도를 3D 공간에서 인터랙티브하게 체험할 수 있는 웹 기반 시뮬레이터입니다.' },
+        { label: '핵심 목표', text: 'NASA의 실제 천체 수치 데이터를 기반으로 물리적 정확도를 높이고, 브라우저 상에서 부드러운 3D 렌더링 성능을 달성하는 것이 핵심 과제였습니다.' },
       ],
       techs: [
-        { name: 'Three.js', reason: 'WebGL 기반 3D 렌더링. 행성 메시, 텍스처, 조명 전부 Three.js로 처리.' },
-        { name: 'React-Three-Fiber', reason: 'React 선언형 방식으로 3D 씬 구성. useFrame 훅으로 공전 애니메이션.' },
-        { name: 'React', reason: '행성 정보 패널 UI와 3D 씬을 같은 상태로 동기화.' },
+        { name: 'React-Three-Fiber', reason: '기존의 복잡한 Three.js 코드를 React의 선언적 컴포넌트 구조로 캡슐화하여 3D 씬과 UI 상태 연동을 유기적으로 관리했습니다.' },
+        { name: 'Three.js (WebGL)', reason: '고해상도 텍스처를 매핑하고 조명(PointLight) 및 재질(Material)을 다루어 사실적인 질감의 우주 공간을 브라우저에 렌더링했습니다.' },
+        { name: 'NASA 데이터', reason: '실제 천체들의 반지름, 자전축 기울기, 궤도 주기 등의 정확한 물리 변수를 시뮬레이션 알고리즘에 반영했습니다.' },
       ],
-      trial: '행성 텍스처를 고해상도로 쓰니 초기 로딩이 너무 느렸다. TextureLoader에 LoadingManager를 붙여 프로그레스 표시를 했고, 뷰포트 거리 기반 LOD를 적용해 멀리 있는 행성은 저해상도 텍스처를 쓰도록 했다.',
+      trial: '1인 전담 개발 프로젝트로서, 고해상도 이미지(Texture)들을 로드할 때 발생하는 렌더링 병목 현상을 관리하고, React 컴포넌트 생명주기와 Three.js의 매 프레임 업데이트(useFrame) 사이클을 동기화하는 귀중한 최적화 경험을 얻었습니다.',
       results: [
-        { num: '8개', desc: '행성 + 위성 포함 모델링' },
-        { num: '60fps', desc: '목표 렌더링 성능' },
+        { num: 'NASA Data', desc: '실제 천체 물리 수치 적용' },
+        { num: 'WebGL', desc: '브라우저 3D 렌더링' },
         { num: '1인', desc: '졸업 개인 프로젝트' },
       ],
     },
@@ -185,25 +188,26 @@ export const PROJECTS: Project[] = [
     tags: ['Unity', 'C#', 'Game Design'],
     color: '#160a08',
     textColor: '#d8c870',
-    date: 'DEC 2022 — AUG 2023',
+    date: '2022.12~2023.08',
+    cardDate: '2022.12',
     filter: 'game',
     wide: true,
-    github: 'https://github.com/Jeon-YJ1004',
+    github: 'https://github.com/SeoulTechTCPGame/HumanSurvival?tab=readme-ov-file',
     detail: {
       problem: [
-        { label: '문제 상황', text: '7인 팀에서 프론트엔드 개발자가 Unity 프로젝트를 맡는 건 처음이었다. C#과 Unity의 컴포넌트 시스템은 React의 선언형 패러다임과 달랐고, 게임 루프 안에서 상태를 관리하는 방식을 새로 배워야 했다.' },
-        { label: '개발 중 겪은 문제', text: '적 AI의 경로탐색 비용이 커서 적이 많아질수록 프레임이 떨어졌다. A* 알고리즘을 직접 구현했는데, NavMesh 기반으로 전환하고 업데이트 주기를 제한하는 방식으로 성능을 개선했다.' },
+        { label: '프로젝트 개요', text: '7명 규모의 대학교 게임 개발 동아리 팀에서 협업하여 제작한 뱀파이어 서바이벌 장르의 탑다운 로그라이트 액션 생존 게임입니다.' },
+        { label: '개발 역할', text: 'Unity 엔진 환경에서 C#을 활용해 몬스터의 스폰 및 추적 로직, 플레이어의 조작 및 데미지 연산, 아이템 상호작용 등 주요 인게임 시스템 구현을 담당했습니다.' },
       ],
       techs: [
-        { name: 'Unity', reason: '2D 물리 엔진과 타일맵 시스템. 로그라이트 맵 생성에 Tilemap 활용.' },
-        { name: 'C#', reason: 'Unity 스크립팅. 적 AI, 아이템 시스템, 게임 루프 전반 담당.' },
-        { name: 'ScriptableObject', reason: '아이템·스킬 데이터를 코드에서 분리. 기획자가 직접 수치 조정 가능하게.' },
+        { name: 'Unity Engine', reason: '게임 내 물리 엔진, 충돌 판정, 애니메이션 제어 등 로그라이트 생존 액션 구현을 위한 종합적인 툴셋으로 활용했습니다.' },
+        { name: 'C# (OOP)', reason: '다양한 형태의 몬스터와 무기 로직을 모듈화하기 위해 객체지향 원칙과 다형성(Interface)을 적용하여 유지보수성을 높였습니다.' },
+        { name: '데이터 분리', reason: '기획 담당 팀원이 직접 유니티 인스펙터를 통해 몬스터 스탯과 난이도를 밸런싱할 수 있도록 코드와 데이터를 분리하는 데 집중했습니다.' },
       ],
-      trial: 'ScriptableObject 패턴을 중반부에 도입했는데 초기에 하드코딩된 수치들을 전부 마이그레이션하는 데 시간이 꽤 걸렸다. 처음부터 데이터 분리를 설계했어야 했다는 걸 그때 배웠다.',
+      trial: '끊임없이 다수의 적이 생성되고 파괴되는 로그라이트 장르의 특성상 게임 루프 성능 최적화가 필수적이었습니다. 다양한 클래스 간의 의존성을 분리하고 객체의 라이프사이클을 제어하는 구조 설계를 통해 협업 프로젝트에서의 C# 아키텍처 능력을 크게 향상시켰습니다.',
       results: [
-        { num: '7인', desc: '팀 개발' },
-        { num: '9개월', desc: '개발 기간' },
-        { num: '∞', desc: '로그라이트 무한 플레이' },
+        { num: 'Unity C#', desc: '객체지향 로직 구현' },
+        { num: '협업 구조', desc: '기획-개발 밸런싱 분리' },
+        { num: '7인', desc: '장기 팀 개발 완주' },
       ],
     },
   },
@@ -233,7 +237,7 @@ export const WORK_ITEMS: WorkItem[] = [
     detail: {
       problem: 'GPS 단독 인증은 신호 오차로 현장 밖에서도 인증되는 문제가 있었다. 정확도를 높이면서도 인증 UX가 번거롭지 않아야 했다.',
       solution: 'GPS 반경 검증 + 카메라 촬영 → AWS Rekognition 비교 순서로 이중 검증. Kakao Map API의 좌표 보정 로직을 적용했다.',
-      trial: '초기에는 GPS 오차를 단순 반경 확대로 해결하려 했는데 그러면 인증 의미가 없어졌다. Rekognition 신뢰도 임계값 튜닝에 시간이 가장 많이 걸렸다.',
+      trial: '초기에는 GPS 오차을 단순 반경 확대로 해결하려 했는데 그러면 인증 의미가 없어졌다. Rekognition 신뢰도 임계값 튜닝에 시간이 가장 많이 걸렸다.',
     },
   },
   {
@@ -244,7 +248,7 @@ export const WORK_ITEMS: WorkItem[] = [
     result: 'npm 배포 완료',
     detail: {
       problem: 'Button, Input, Modal 등 동일한 컴포넌트가 여러 페이지에 각각 다르게 구현돼 있어 수정 시 모든 파일을 찾아야 했다.',
-      solution: 'Rollup으로 tree-shakeable 번들 구성. CSS Variables 기반으로 테마 토큰 설계. Storybook으로 컴포넌트 문서 자동화.',
+      solution: 'Rollup으로 tree-shakeable 번들 구성. CSS Variables 기반 시각 토큰 설계. Storybook으로 컴포넌트 문서 자동화.',
       trial: '공통 컴포넌트 수정 시 배포 한 번으로 전체 서비스에 반영. 신규 페이지 개발 속도가 체감상 크게 단축됐다.',
     },
   },
@@ -377,4 +381,3 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
     color: '#c080f0',
   },
 ];
-

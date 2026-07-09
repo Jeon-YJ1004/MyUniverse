@@ -78,6 +78,7 @@
   border: 0.5px solid var(--border);
   transition: border-color 0.3s;
   will-change: transform;
+  color: #ffffff !important; /* 다크 모드처럼 순백색(white) 강제 고정 */
 }
 
 .proj-card:hover {
@@ -98,15 +99,16 @@
 .card-meta {
   font-family: var(--mono);
   font-size: 10px;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.75) !important; /* 다크 모드처럼 선명한 white 반투명 */
   line-height: 1.7;
 }
 
-.card-name {
+.card-name, .card-name span {
   font-family: var(--display);
   font-size: 30px;
   line-height: 1.0;
   margin-top: 4px;
+  color: #ffffff !important; /* 순백색 강제 고정 */
 }
 
 .card-tags {
@@ -116,18 +118,20 @@
   margin-top: 6px;
 }
 
-.tag {
+.proj-card .tech-tag {
   font-family: var(--mono);
   font-size: 10px;
   padding: 2px 8px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important; /* 태그 글씨 white 강제 고정 */
+  border: 0.5px solid rgba(255, 255, 255, 0.2) !important;
 }
 
 .card-date {
   font-family: var(--mono);
   font-size: 10px;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.6) !important; /* 다크 모드처럼 선명한 white 반투명 */
   margin-top: 5px;
 }
 
@@ -184,11 +188,12 @@
 }
 
 .detail-hero {
-  height: 220px;
+  height: 185px;
   flex-shrink: 0;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   padding: 1.5rem;
+  padding-top: 2rem;
   position: relative;
   overflow: hidden;
 }
@@ -196,6 +201,9 @@
 .detail-hero-content {
   position: relative;
   z-index: 2;
+  width: 100%;
+  padding-right: 52px;
+  box-sizing: border-box;
 }
 
 .detail-category {
@@ -452,7 +460,7 @@
 }
 
 .slash {
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.45) !important;
   margin: 0 3px;
 }
 
@@ -463,6 +471,10 @@
   .proj-card {
     height: auto;
     flex-direction: column;
+  }
+  .card-name {
+    font-size: 22px !important;
+    margin-top: 6px;
   }
   .card-right {
     width: 100%;
@@ -479,6 +491,7 @@
   .detail-hero {
     height: 155px;
     padding: 1.2rem;
+    align-items: flex-end;
   }
   .detail-title {
     font-size: 32px;

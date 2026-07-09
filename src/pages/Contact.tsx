@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { PageHeader, SectionHeader, Reveal } from '../components/ui';
-import '../styles/contact.css';
+import "../styles/contact.css";
+
+import { PageHeader, Reveal, SectionHeader } from "../components/ui";
+import React, { useState } from "react";
 
 // 임시 주석 처리 (GitHub Activity 비활성화용)
 /*
@@ -22,7 +23,10 @@ interface GitHubProfile {
 */
 
 export const Contact: React.FC = () => {
-  const [toast, setToast] = useState<{ show: boolean; message: string }>({ show: false, message: '' });
+  const [toast, setToast] = useState<{ show: boolean; message: string }>({
+    show: false,
+    message: "",
+  });
   // 임시 주석 처리 (GitHub Activity 비활성화용)
   // const [repos, setRepos] = useState<RepoData[]>([]);
   // const [profile, setProfile] = useState<GitHubProfile | null>(null);
@@ -34,7 +38,7 @@ export const Contact: React.FC = () => {
   //     try {
   //       setLoading(true);
   //       const username = 'Jeon-YJ1004';
-  //       
+  //
   //       // Fetch Profile
   //       const profileRes = await fetch(`https://api.github.com/users/${username}`);
   //       if (profileRes.ok) {
@@ -46,12 +50,12 @@ export const Contact: React.FC = () => {
   //           bio: profileData.bio || 'Frontend Developer',
   //         });
   //       }
-  // 
+  //
   //       // Fetch Repos
   //       const reposRes = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=3`);
   //       if (reposRes.ok) {
   //         const reposData = await reposRes.json();
-  //         
+  //
   //         // 언어별 고유 색상 매핑
   //         const getLangColor = (lang: string) => {
   //           const colors: { [key: string]: string } = {
@@ -66,7 +70,7 @@ export const Contact: React.FC = () => {
   //           };
   //           return colors[lang] || '#8b8b8b';
   //         };
-  // 
+  //
   //         const formattedRepos = reposData.map((repo: any) => ({
   //           name: repo.name,
   //           desc: repo.description || '설명이 등록되지 않은 저장소입니다.',
@@ -83,7 +87,7 @@ export const Contact: React.FC = () => {
   //       setLoading(false);
   //     }
   //   };
-  // 
+  //
   //   fetchGitHubData();
   // }, []);
 
@@ -91,17 +95,15 @@ export const Contact: React.FC = () => {
   const showToast = (message: string) => {
     setToast({ show: true, message });
     setTimeout(() => {
-      setToast({ show: false, message: '' });
+      setToast({ show: false, message: "" });
     }, 2200);
   };
 
   const copyEmail = () => {
-    const email = 'jeon.dev@email.com';
-    navigator.clipboard.writeText(email).then(() => showToast('✓ 이메일이 복사됐어요'));
-  };
-
-  const downloadResume = () => {
-    showToast('📄 이력서를 준비 중이에요');
+    const email = "wjsdudwn5374@gmail.com";
+    navigator.clipboard
+      .writeText(email)
+      .then(() => showToast("✓ 이메일이 복사됐어요"));
   };
 
   // Theme-synchronized GitHub contribution chart color
@@ -113,12 +115,13 @@ export const Contact: React.FC = () => {
     <div className="page">
       {/* HEADER */}
       <Reveal>
-        <PageHeader 
-          label="" 
-          title="CONTACT" 
+        <PageHeader
+          label=""
+          title="CONTACT"
           desc={
             <>
-              함께 고민하고 만들어보고 싶은 서비스가 있다면 언제든 편하게 연락해 주세요.
+              함께 고민하고 만들어보고 싶은 서비스가 있다면 언제든 편하게 연락해
+              주세요.
               <br />
               코드로 즐겁게 소통하고 이야기하기를 기대합니다.
             </>
@@ -133,16 +136,21 @@ export const Contact: React.FC = () => {
           {/* Email */}
           <div
             className="contact-card"
-            style={{ '--card-glow': 'rgba(106,186,239,.06)' } as React.CSSProperties}
+            style={
+              { "--card-glow": "rgba(106,186,239,.06)" } as React.CSSProperties
+            }
             onClick={copyEmail}
           >
-            <div className="contact-icon" style={{ background: 'rgba(106,186,239,.08)' }}>
+            <div
+              className="contact-icon"
+              style={{ background: "rgba(106,186,239,.08)" }}
+            >
               ✉️
             </div>
             <div className="contact-info">
               <div className="contact-type">Email</div>
               <div className="contact-value" id="emailVal">
-                jeon.dev@email.com
+                wjsdudwn5374@gmail.com
               </div>
             </div>
             <div className="contact-action">복사 →</div>
@@ -154,10 +162,20 @@ export const Contact: React.FC = () => {
             href="https://github.com/Jeon-YJ1004"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ '--card-glow': 'rgba(200,200,200,.04)' } as React.CSSProperties}
+            style={
+              { "--card-glow": "rgba(200,200,200,.04)" } as React.CSSProperties
+            }
           >
-            <div className="contact-icon" style={{ background: 'rgba(255,255,255,.06)' }}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <div
+              className="contact-icon"
+              style={{ background: "rgba(255,255,255,.06)" }}
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
               </svg>
             </div>
@@ -174,9 +192,19 @@ export const Contact: React.FC = () => {
             href="https://velog.io/@jeon-yj"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ '--card-glow': 'rgba(32,212,113,.04)' } as React.CSSProperties}
+            style={
+              { "--card-glow": "rgba(32,212,113,.04)" } as React.CSSProperties
+            }
           >
-            <div className="contact-icon" style={{ background: 'rgba(32,212,113,.08)', color: '#20d471', fontFamily: 'var(--display)', fontSize: '18px' }}>
+            <div
+              className="contact-icon"
+              style={{
+                background: "rgba(32,212,113,.08)",
+                color: "#20d471",
+                fontFamily: "var(--display)",
+                fontSize: "18px",
+              }}
+            >
               V
             </div>
             <div className="contact-info">
@@ -187,12 +215,18 @@ export const Contact: React.FC = () => {
           </a>
 
           {/* Resume */}
-          <div
+          <a
             className="contact-card"
-            style={{ '--card-glow': 'rgba(240,200,80,.04)' } as React.CSSProperties}
-            onClick={downloadResume}
+            href="/resume.pdf"
+            download="전영주_프론트엔드_이력서.pdf"
+            style={
+              { "--card-glow": "rgba(240,200,80,.04)" } as React.CSSProperties
+            }
           >
-            <div className="contact-icon" style={{ background: 'rgba(240,200,80,.08)' }}>
+            <div
+              className="contact-icon"
+              style={{ background: "rgba(240,200,80,.08)" }}
+            >
               📄
             </div>
             <div className="contact-info">
@@ -200,7 +234,7 @@ export const Contact: React.FC = () => {
               <div className="contact-value">이력서 PDF 다운로드</div>
             </div>
             <div className="contact-action">저장 →</div>
-          </div>
+          </a>
         </div>
       </Reveal>
 
@@ -306,21 +340,43 @@ export const Contact: React.FC = () => {
 
       {/* CLOSING */}
       <Reveal delay={300} className="section">
-        <div style={{ textAlign: 'center', padding: '3rem 0 2rem' }}>
-          <div style={{ fontFamily: 'var(--display)', fontSize: '48px', color: 'var(--text)', lineHeight: 1, marginBottom: '1rem' }}>
+        <div style={{ textAlign: "center", padding: "3rem 0 2rem" }}>
+          <div
+            style={{
+              fontFamily: "var(--display)",
+              fontSize: "48px",
+              color: "var(--text)",
+              lineHeight: 1,
+              marginBottom: "1rem",
+            }}
+          >
             MADE WITH
           </div>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: '12px', color: 'var(--muted)', letterSpacing: '.1em' }}>
+          <div
+            style={{
+              fontFamily: "var(--mono)",
+              fontSize: "12px",
+              color: "var(--muted)",
+              letterSpacing: ".1em",
+            }}
+          >
             React · Vite · TypeScript · Framer Motion · 📡
           </div>
-          <div style={{ marginTop: '2rem', fontFamily: 'var(--mono)', fontSize: '11px', color: 'var(--muted)' }}>
+          <div
+            style={{
+              marginTop: "2rem",
+              fontFamily: "var(--mono)",
+              fontSize: "11px",
+              color: "var(--muted)",
+            }}
+          >
             © 2026 전영주. All rights reserved.
           </div>
         </div>
       </Reveal>
 
       {/* Toast Alert */}
-      <div className={`toast ${toast.show ? 'show' : ''}`} id="toast">
+      <div className={`toast ${toast.show ? "show" : ""}`} id="toast">
         {toast.message}
       </div>
     </div>
@@ -328,4 +384,3 @@ export const Contact: React.FC = () => {
 };
 
 export default Contact;
-

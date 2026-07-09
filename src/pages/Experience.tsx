@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { WORK_ITEMS, EDUCATION_LIST } from '../data/portfolioData';
-import { PageHeader, Reveal, Tag, ResultPill } from '../components/ui';
-import '../styles/experience.css';
+import "../styles/experience.css";
+
+import { EDUCATION_LIST, WORK_ITEMS } from "../data/portfolioData";
+import { PageHeader, ResultPill, Reveal, Tag } from "../components/ui";
+import React, { useState } from "react";
 
 /* 임시 주석 처리 (과다/작위적 지표 비활성화)
 interface CountUpProps {
@@ -65,11 +66,11 @@ export const Experience: React.FC = () => {
   //     },
   //     { threshold: 0.3 }
   //   );
-  // 
+  //
   //   if (statsRowRef.current) {
   //     statsIO.observe(statsRowRef.current);
   //   }
-  // 
+  //
   //   return () => {
   //     if (statsRowRef.current) {
   //       statsIO.unobserve(statsRowRef.current);
@@ -78,6 +79,7 @@ export const Experience: React.FC = () => {
   // }, []);
 
   const toggleDetail = (index: number) => {
+    return;
     setExpandedIndex((prev) => (prev === index ? null : index));
   };
 
@@ -92,7 +94,8 @@ export const Experience: React.FC = () => {
             <>
               코드를 작성하기 전, 해결해야 할 진짜 문제를 깊게 고민합니다.
               <br />
-              사용자가 불편함을 느끼는 지점으로부터 시작해 기술로 문제를 돌파하는 과정을 기록했습니다.
+              사용자가 불편함을 느끼는 지점으로부터 시작해 기술로 문제를
+              돌파하는 과정을 기록했습니다.
             </>
           }
         />
@@ -103,7 +106,6 @@ export const Experience: React.FC = () => {
         <div className="company-block">
           <div className="company-header">
             <div className="company-left">
-              <div className="company-badge">실무 경험</div>
               <div className="company-name">오더체크</div>
               <div className="company-role">Frontend Developer · 정규직</div>
             </div>
@@ -166,7 +168,7 @@ export const Experience: React.FC = () => {
               return (
                 <div
                   key={work.num}
-                  className={`work-item ${isOpen ? 'expanded' : ''}`}
+                  className={`work-item ${isOpen ? "expanded" : ""}`}
                   onClick={() => toggleDetail(idx)}
                 >
                   <div>
@@ -177,19 +179,27 @@ export const Experience: React.FC = () => {
                     <div className="work-desc">{work.desc}</div>
 
                     {/* Accordion Detail */}
-                    <div className={`work-detail ${isOpen ? 'open' : ''}`}>
+                    <div className={`work-detail ${isOpen ? "open" : ""}`}>
                       <div className="work-detail-inner">
                         <div className="detail-card">
                           <div className="detail-card-label">Problem</div>
-                          <div className="detail-card-text">{work.detail.problem}</div>
+                          <div className="detail-card-text">
+                            {work.detail.problem}
+                          </div>
                         </div>
                         <div className="detail-card">
                           <div className="detail-card-label">Solution</div>
-                          <div className="detail-card-text">{work.detail.solution}</div>
+                          <div className="detail-card-text">
+                            {work.detail.solution}
+                          </div>
                         </div>
                         <div className="detail-card">
-                          <div className="detail-card-label">Result / Trial</div>
-                          <div className="detail-card-text">{work.detail.trial}</div>
+                          <div className="detail-card-label">
+                            Result / Trial
+                          </div>
+                          <div className="detail-card-text">
+                            {work.detail.trial}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -206,9 +216,9 @@ export const Experience: React.FC = () => {
                     </div>
                   </div>
 
-                  <span className="expand-hint">
+                  {/* <span className="expand-hint">
                     자세히 <span className="expand-arrow">▼</span>
-                  </span>
+                  </span> */}
                 </div>
               );
             })}
@@ -221,10 +231,7 @@ export const Experience: React.FC = () => {
         <div className="edu-block">
           <div className="edu-header">
             <div>
-              <div className="edu-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontFamily: 'var(--mono)', fontSize: '10px', background: 'rgba(106, 222, 138, 0.1)', border: '0.5px solid rgba(106, 222, 138, 0.25)', color: 'var(--accent2)', padding: '3px 10px', borderRadius: '999px', marginBottom: '12px', letterSpacing: '0.08em' }}>
-                교육 & 수상
-              </div>
-              <div className="company-name" style={{ fontSize: '34px' }}>
+              <div className="company-name" style={{ fontSize: "34px" }}>
                 Education
               </div>
               <div className="company-role">학력 및 수료 이력</div>
