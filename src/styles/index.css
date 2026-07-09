@@ -93,6 +93,10 @@ nav.scrolled {
   border-color: var(--border);
 }
 
+body.locked nav {
+  z-index: 0;
+}
+
 .nav-logo {
   font-family: var(--display);
   font-size: 19px;
